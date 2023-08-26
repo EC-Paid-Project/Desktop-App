@@ -33,7 +33,6 @@ const dummyData = [
   return (
     <div className="history-page">
       <h1>Fuel History</h1>
-      <NavBar/>
       <div className="search-bar" >
         <span><BiSearchAlt size={25}/></span><input
           type="text"

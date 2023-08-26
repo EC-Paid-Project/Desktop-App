@@ -63,7 +63,6 @@ function RegistrationForm() {
     <div className="outer">
       <h1 className='center underline'>Entry Form (Enter the Filling Details)</h1>
       <hr />
-      <NavBar/>
       <div className="main">
         <div className="container">
           <div className="entry-content">
@@ -203,7 +202,8 @@ function RegistrationForm() {
                       type="text"
                       name="totalGas"
                       id="blank_name"
-                      value={formData.totalGas}
+                      value={formData.filled_car_weight-formData.empty_car_weight>0?formData.filled_car_weight-formData.empty_car_weight:0}
+                      readOnly={true}
                       onChange={handleChange}
                     />
                   </div>

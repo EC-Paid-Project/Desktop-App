@@ -61,8 +61,8 @@ function AppointmentForm() {
     }catch{
 
     }
-    console.log(formData);
-    navigate('/');
+    // console.log(formData);
+    // navigate('/');
   };
 
   return (
@@ -71,7 +71,6 @@ function AppointmentForm() {
       <h1 className="center underline">Appointment Form</h1>
       <hr className="full" />
       
-      <NavBar />
       <div className="main">
         <div className="container">
           <div className="entry-content">

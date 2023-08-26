@@ -1,5 +1,6 @@
-import React, { useState } from 'react' 
+import React, { useState,useMemo, useEffect } from 'react' 
 import {BiSearchAlt} from 'react-icons/bi';
+import {getAppointment,deleteAppointment} from "../api/index"
 import "./AppointmentHistory.css"
 import NavBar from './NavBar';
 const initialAppointments = [
@@ -19,12 +20,35 @@ const initialAppointments = [
     },
     // Add more initial appointments
 ];
+//get the appoinment with useMemo 
 
-const AppointmentComponent = () => {
-  const [appointments, setAppointments] = useState(initialAppointments);
+
+
+const 
+AppointmentComponent = () => {
+  const [appointments, setAppointments] = useState(initialAppointments)
   const [searchTerm, setSearchTerm] = useState('');
+  
+  
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const a = await  getAppointment()
+        console.log(a);
+        setAppointments(a.data)
+      } catch (error) {
+        console.error("Error fetching appointment:", error.response);
+      }
+    };
+    fetchData();
+  }, []);
+  
 
-  const handleDelete = (id) => {
+
+  const handleDelete = async(id) => {
+    const a = await deleteAppointment(id);
+    // const a = await deleteAppointment(id);
+    console.log(a);
     setAppointments((prevAppointments) =>
       prevAppointments.filter((appointment) => appointment.id !== id)
     );
@@ -35,13 +59,13 @@ const AppointmentComponent = () => {
       appointment.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
       appointment.date.toLowerCase().includes(searchTerm.toLowerCase()) ||
       appointment.car_no.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      appointment.time.toLowerCase().includes(searchTerm.toLowerCase())
+      appointment.date.toLowerCase().includes(searchTerm.toLowerCase())
+
   );
 
   return (
     <div className="appointments-list">
-      <h1>Appointments</h1>
- <NavBar/>
+      <h1 >Appointments</h1>
         <div className='search-bar'>
 
       <span>
@@ -60,7 +84,7 @@ const AppointmentComponent = () => {
           <p>Name: {appointment.name}</p>
           <p>Car NO: {appointment.car_no}</p>
           <p>Date: {appointment.date}</p>
-          <p>Time: {appointment.time}</p>
+          {/* <p>Time: {appointment.time}</p> */}
           <button onClick={() => handleDelete(appointment.id)}>Delete</button>
         </div>
       )):<div style={{width:"300px",margin:"auto"}}><h1>No Data Found</h1></div>}
