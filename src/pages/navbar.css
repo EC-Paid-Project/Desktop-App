@@ -1,0 +1,90 @@
+/* Reset default styles */
+  /* Navigation bar styles */
+  .navbar {
+    /* z-index: 100; */
+    
+    background-color: rgb(253, 254, 255);
+    border-top: 2px    solid rgb(81, 81, 81);
+    border-bottom: 2px    solid rgb(81, 81, 81);
+    width: 48vw;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: auto;
+    margin-bottom: 10px;
+  }
+  
+  .logo {
+    color: rgb(7, 4, 4);
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+
+  .navbar ul {
+    /* margin: 0 15px; */
+    /* width: 20px;
+  height: 20px; */
+  color: #000;
+  }
+
+  
+  .navbar li {
+    width: 20px;
+    height: 20px;
+    margin: 0 15px;
+  }
+  
+  .navbar a {
+    text-decoration: underline;
+    font-size: 1.2em;
+    font-weight: bold;
+    /* width: 20px;
+    height: 20px; */
+    color: rgba(2, 92, 226, 0.691);
+    transition: color 0.3s;
+  }
+  
+  .navbar a:hover {
+    color: #04247b;
+  }
+  
+  @media (max-width: 768px) {
+    .navbar {
+      display: flex;
+      flex-direction: column;
+      /* position: absolute; */
+      justify-content:center ;
+      top: 60px;
+      left: 0;
+      background-color: #fefdfd;
+      width: 100%;
+      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+    }
+  
+    .navbar.active {
+      display: flex;
+    }
+  
+    .navbar li {
+      margin: 15px 0;
+      text-align: center;
+    }
+  
+    
+  
+    .mobile-menu {
+      display: block;
+      font-size: 24px;
+      color: white;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+  }
+  @media screen and (max-width: 1024px) {
+    .navbar {
+      width: 80%;
+      font-size: 0.8em;
+    }
+  }
