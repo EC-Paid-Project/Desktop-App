@@ -13,11 +13,10 @@ req.headers["Content-Type"] = "application/json";
 });
 
 export const postAppointment = async (formdata) => await API.post(`appointment/`,formdata);
-export const getAppointment = async () => await API.post('get_appointment/')
-export const deleteAppointment = async (id) => {
-    console.log(id)
 
-    return await API.delete('get_appointment/',{data:id})}
+export const login = async (formdata) => await API.post(`dj-rest-auth/`,formdata);
+export const getAppointment = async () => await API.post('get_appointment/')
+export const deleteAppointment = async (id) => await API.delete('get_appointment/',{data:id})
 export const postGasDetails = async (formdata) => await API.post("gasdetails/",formdata);
 
 

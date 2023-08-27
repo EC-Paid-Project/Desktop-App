@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './Forms.css';
 
 import { useNavigate } from 'react-router-dom';
-
+import {login} from "../action/action"
 export default function Login() {
 
 
@@ -11,7 +11,7 @@ export default function Login() {
       password: '',
       email: '',
     });
-  
+    const [loginError, setLoginError] = useState(false); // New state variable
   
   
     const handleChange = (event) => {
@@ -22,10 +22,20 @@ export default function Login() {
       }));
     };
   
-    const handleSubmit = (event) => {
+    const handleSubmit = async(event) => {
       event.preventDefault();
       console.log(formData); 
-      navigate("/")// You can process the form data here
+const a=await login(formData)
+if(a!=null){
+      navigate("/")
+      setLoginError(false);
+
+}
+else{
+      navigate("/appointment")
+  // show invalid credential 
+  setLoginError(true);
+}
     };
   
     return (
@@ -35,7 +45,7 @@ export default function Login() {
   
   
   
-        <div className="main">
+        <div className="main" style={{marginTop:"10%"}}>
   
      
           <div className="container">
@@ -46,7 +56,7 @@ export default function Login() {
             
             <div className="entry-form-login entry-form" onSubmit={handleSubmit}>
 
-                <div className="form-group">
+                <div className="form-group "style={{width:"80%",margin:"auto"}} >
                   <div className="form-input">
                     <label htmlFor="email">Email</label>
                     <input
@@ -69,8 +79,9 @@ export default function Login() {
                       onChange={handleChange}
                       required
                     />
+              { loginError && <p style={{ color: 'red', textAlign: 'center' }}>Invalid credentials</p>}
                   </div>
-              <div className="form-submit" style={{width:"200px"}}>
+              <div className="form-submit" style={{marginLeft:"18%"}}>
                 <button className="submit" id="submit" type="submit" onClick={handleSubmit}>Submit</button>
               </div>
                 </div>

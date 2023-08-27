@@ -1,6 +1,6 @@
 import React, { useState,useMemo, useEffect } from 'react' 
 import {BiSearchAlt} from 'react-icons/bi';
-import {getAppointment,deleteAppointment} from "../api/index"
+import { getAppointment ,deleteAppointment} from '../action/action';
 import "./AppointmentHistory.css"
 import NavBar from './NavBar';
 const initialAppointments = [
@@ -32,13 +32,10 @@ AppointmentComponent = () => {
   
   useEffect(() => {
     const fetchData = async () => {
-      try {
         const a = await  getAppointment()
-        console.log(a);
-        setAppointments(a.data)
-      } catch (error) {
-        console.error("Error fetching appointment:", error.response);
-      }
+        if(a!=null){
+          setAppointments(a.data)
+        }
     };
     fetchData();
   }, []);

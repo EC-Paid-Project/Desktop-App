@@ -156,7 +156,7 @@ hr{
   border-radius: 2px;
 }
 .entry-form-login{
-
+padding-left: -10px;
   width: 50%;
   margin-top: 50px;
 }

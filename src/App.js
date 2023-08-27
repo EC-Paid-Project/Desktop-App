@@ -14,6 +14,7 @@ function App() {
     <div className="App">
       <Router>
         <Routes>
+          <Route  path="/" element={<Login />} />
           <Route
             path="*"
             element={
@@ -21,7 +22,6 @@ function App() {
                 <NavBar />
                 <Routes>
                   <Route index element={<Choose />} />
-                  <Route path="login" element={<Login />} />
                   <Route path="entry" element={<EntryForm />} />
                   <Route path="history" element={<History />} />
                   <Route path="appointmentHistory" element={<AppointmentComponent />} />
@@ -32,7 +32,7 @@ function App() {
           />
           <Route
             path="*"
-            element={<Navigate to="/login" replace />} // Redirect to /login if path not found
+            element={<Navigate to="/" replace />} // Redirect to /login if path not found
           />
         </Routes>
       </Router>

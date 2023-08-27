@@ -2,7 +2,7 @@
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: Poppins,-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -10,9 +10,14 @@ body {
 }
 
 :root{
-  background-color: rgba(12, 8, 8, 0.05);
+  background-color: rgba(12, 8, 8, 0.107);
 }
 code {
   font-family: Poppins, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+input{
+  font-weight: bold;
+  font-family: poppins;
 }
